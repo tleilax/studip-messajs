@@ -2,28 +2,6 @@
 
 	$.noty.themes.studipTheme = {
 		name: 'studipTheme',
-		helpers: {
-			borderFix: function() {
-				if (this.options.dismissQueue) {
-					var selector = this.options.layout.container.selector + ' ' + this.options.layout.parent.selector;
-					switch (this.options.layout.name) {
-						case 'top':
-							$(selector).css({borderRadius: '0px 0px 0px 0px'});
-							$(selector).last().css({borderRadius: '0px 0px 5px 5px'}); break;
-						case 'topCenter': case 'topLeft': case 'topRight':
-						case 'bottomCenter': case 'bottomLeft': case 'bottomRight':
-						case 'center': case 'centerLeft': case 'centerRight': case 'inline':
-							$(selector).css({borderRadius: '0px 0px 0px 0px'});
-//							$(selector).first().css({'border-top-left-radius': '5px', 'border-top-right-radius': '5px'});
-							$(selector).last().css({'border-bottom-left-radius': '5px', 'border-bottom-right-radius': '5px'}); break;
-						case 'bottom':
-							$(selector).css({borderRadius: '0px 0px 0px 0px'});
-							$(selector).first().css({borderRadius: '5px 5px 0px 0px'}); break;
-						default: break;
-					}
-				}
-			}
-		},
 		modal: {
 			css: {
 				position: 'fixed',
@@ -38,22 +16,6 @@
 			}
 		},
 		style: function() {
-
-			this.$bar.css({
-				overflow: 'hidden',
-				width: '100%',
-				margin: 'auto'
-			});
-
-			this.$message.css({
-				fontSize: '13px',
-				lineHeight: '16px',
-				textAlign: 'center',
-				padding: '8px 10px 9px',
-				width: 'auto',
-				position: 'relative'
-			});
-
 			this.$closeButton.css({
 				position: 'absolute',
 				top: 4, right: 4,
@@ -82,55 +44,10 @@
 				mouseenter: function() { $(this).find('.noty_close').stop().fadeTo('normal',1); },
 				mouseleave: function() { $(this).find('.noty_close').stop().fadeTo('normal',0); }
 			});
-
-			switch (this.options.layout.name) {
-				case 'top':
-					this.$bar.css({
-						borderRadius: '0px 0px 5px 5px',
-						borderBottom: '2px solid #eee',
-						borderLeft: '2px solid #eee',
-						borderRight: '2px solid #eee',
-						boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)"
-					});
-				break;
-				case 'topCenter': case 'center': case 'bottomCenter': case 'inline':
-					this.$bar.css({
-						borderRadius: '0 0 5px 5px',
-						border: '1px solid #eee',
-						boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)"
-					});
-					this.$message.css({fontSize: '13px', textAlign: 'center'});
-				break;
-				case 'topLeft': case 'topRight':
-				case 'bottomLeft': case 'bottomRight':
-				case 'centerLeft': case 'centerRight':
-					this.$bar.css({
-						borderRadius: '5px',
-						border: '1px solid #eee',
-						boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)"
-					});
-					this.$message.css({fontSize: '13px', textAlign: 'left'});
-				break;
-				case 'bottom':
-					this.$bar.css({
-						borderRadius: '5px 5px 0px 0px',
-						borderTop: '2px solid #eee',
-						borderLeft: '2px solid #eee',
-						borderRight: '2px solid #eee',
-						boxShadow: "0 -2px 4px rgba(0, 0, 0, 0.1)"
-					});
-				break;
-				default:
-					this.$bar.css({
-						border: '2px solid #eee',
-						boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)"
-					});
-				break;
-			}
 		},
 		callback: {
-			onShow: function() { $.noty.themes.studipTheme.helpers.borderFix.apply(this); },
-			onClose: function() { $.noty.themes.studipTheme.helpers.borderFix.apply(this); }
+			onShow: function() { },
+			onClose: function() { }
 		}
 	};
 
