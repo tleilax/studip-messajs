@@ -1,0 +1,3 @@
+[submodule "vendor/noty"]
+	path = vendor/noty
+	url = git@github.com:needim/noty.git
