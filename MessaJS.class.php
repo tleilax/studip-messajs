@@ -5,8 +5,11 @@ class MessaJS extends StudIPPlugin implements SystemPlugin
     {
         parent::__construct();
 
-        PageLayout::addScript($this->getPluginURL() . '/vendor/noty/js/noty/packaged/jquery.noty.packaged.js');
+        PageLayout::addScript($this->getPluginURL() . '/vendor/noty/js/noty/jquery.noty.js');
+        PageLayout::addScript($this->getPluginURL() . '/noty-studip-layout.js');
+        PageLayout::addScript($this->getPluginURL() . '/noty-studip-theme.js');
         PageLayout::addScript($this->getPluginURL() . '/messa.js');
+        $this->addStylesheet('messa.less');
     }
 }
 
