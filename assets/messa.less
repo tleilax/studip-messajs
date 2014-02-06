@@ -25,9 +25,25 @@
     position: relative;
     text-align: left;
 }
+.noty_close {
+    background: url("@{image-path}/messagebox/cross_inv.png") no-repeat;
+    cursor: pointer;
+    height: 16px;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 16px;
+    
+    transition: opacity 1s;
+}
 .noty_bar {
     margin: 1px 0;
-    padding: 10px 0;
+    padding: 10px;
+    
+    &:hover .noty_close {
+        opacity: 1;
+    }
 }
 .noty_type_success {
     background: url("@{image-path}/messagebox/success.png") #dcf1da no-repeat 10px 10px;

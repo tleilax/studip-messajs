@@ -1,7 +1,7 @@
 (function () {
     $.noty.defaults.layout = 'inline';
     $.noty.defaults.theme  = 'studipTheme';
-//    $.noty.defaults.closeWith  = ['button'];
+    $.noty.defaults.closeWith  = ['button'];
     
     var container = '#barBottomContainer';
 
