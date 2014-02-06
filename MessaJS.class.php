@@ -21,7 +21,9 @@ class MessaJS extends StudIPPlugin implements SystemPlugin
     {
         $factory  = new Flexi_TemplateFactory($this->getPluginPath().'/templates');
         $template = $factory->open('show');
-        $template->set_layout($GLOBALS['template_factory']->open('layouts/base'));
+        if (!Request::isXhr()) {
+            $template->set_layout($GLOBALS['template_factory']->open('layouts/base'));
+        }
         $template->link = PluginEngine::getLink($this, array(), 'spawn');
         echo $template->render();
     }

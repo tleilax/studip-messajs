@@ -3,8 +3,19 @@
         <legend>Spawn new message</legend>
         
         <div>
-            <label for="js">Via JS:</label>
-            <input type="checkbox" name="js" id="js" value="1" checked>
+            <label for="js">Via:</label>
+            <label>
+                <input type="radio" name="via" id="js" value="js" checked>
+                JS
+            </label>
+            <label>
+                <input type="radio" name="via" value="ajax">
+                AJAX
+            </label>
+            <label>
+                <input type="radio" name="via" value="php">
+                PHP
+            </label>
         </div>
         
         <div>
@@ -33,3 +44,8 @@
         </div>
     </fieldset>
 </form>
+
+<div id="ajax_output" style="display: none;">
+    <h2>AJAX</h2>
+    <blockquote id="ajax"></blockquote>
+</div>

@@ -34,15 +34,28 @@
 
 jQuery(function ($) {
     $('#spawn').submit(function () {
-        if (!$('#js').prop('checked')) {
+        var via = $('input[name=via]:checked').val()
+        if (via === 'php') {
             return;
         }
         
-        var type = $('#type').val(),
-            text = $('#text').val(),
-            details = $('#details').prop('checked') ? ['foo', 'bar'] : null;
+        if (via === 'js') {
+            var type = $('#type').val(),
+                text = $('#text').val(),
+                details = $('#details').prop('checked') ? ['foo', 'bar'] : null;
+
+            STUDIP.MessageBox[type](text, details);
+        }
         
-        STUDIP.MessageBox[type](text, details);
+        if (via === 'ajax') {
+            var url  = $(this).attr('action'),
+                data = $(this).serialize();
+            $.post(url, data, function (html) {
+                $('#ajax').html(html);
+                $('#ajax_output').show();
+            });
+            
+        }
         
         return false;
     });
