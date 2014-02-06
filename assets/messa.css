@@ -46,38 +46,39 @@
   width: 95%;
   z-index: 999;
 }
-.noty_bar {
-  margin: 1px 0;
-}
 .noty_message {
   font-size: 13px;
   line-height: 16px;
-  padding: 8px 0;
+  padding: 8px 10px 8px 52px;
   position: relative;
-  text-align: center;
+  text-align: left;
+}
+.noty_bar {
+  margin: 1px 0;
+  padding: 10px 0;
 }
 .noty_type_success {
-  background: #dcf1da;
+  background: url("http://127.0.0.1/~tleilax/studip/trunk/assets/images/messagebox/success.png") #dcf1da no-repeat 10px 10px;
   border: 1px solid #bad0b8;
   color: #000;
 }
 .noty_type_info {
-  background: #d8e3fc;
+  background: url("http://127.0.0.1/~tleilax/studip/trunk/assets/images/messagebox/info.png") #d8e3fc no-repeat 10px 10px;
   border: 1px solid #b6c1da;
   color: #000;
 }
 .noty_type_warning {
-  background: #f8e98e;
+  background: url("http://127.0.0.1/~tleilax/studip/trunk/assets/images/messagebox/warning.png") #f8e98e no-repeat 10px 10px;
   border: 1px solid #d5c76c;
   color: #b06500;
 }
 .noty_type_error {
-  background: #ffdddc;
+  background: url("http://127.0.0.1/~tleilax/studip/trunk/assets/images/messagebox/error.png") #ffdddc no-repeat 10px 10px;
   border: 1px solid #ddbbba;
   color: #000;
 }
 .noty_type_exception {
-  background: #ffbaba;
+  background: url("http://127.0.0.1/~tleilax/studip/trunk/assets/images/messagebox/exception.png") #ffbaba no-repeat 10px 10px;
   border: 1px solid #ddbbba;
   color: #d8000c;
 }
