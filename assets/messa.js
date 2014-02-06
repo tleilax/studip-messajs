@@ -4,6 +4,7 @@
     $.noty.defaults.maxVisible = 64;
     $.noty.defaults.closeWith  = ['button'];
     $.noty.defaults.template = '<div class="noty_message"><div class="noty_text"></div><div class="noty_close"></div></div>';
+    $.noty.defaults.animation.speed = 'fast';
     
     var container = '#barBottomContainer';
 
