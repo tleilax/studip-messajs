@@ -19,15 +19,23 @@ class MessaJS extends StudIPPlugin implements SystemPlugin
     
     public function show_action()
     {
-        PageLayout::postMessage(MessageBox::success('Success!'));
-        PageLayout::postMessage(MessageBox::info('Info!'));
-        PageLayout::postMessage(MessageBox::error('Error!'));
-        PageLayout::postMessage(MessageBox::exception('Exception!'));
-        
         $factory  = new Flexi_TemplateFactory($this->getPluginPath().'/templates');
         $template = $factory->open('show');
         $template->set_layout($GLOBALS['template_factory']->open('layouts/base'));
+        $template->link = PluginEngine::getLink($this, array(), 'spawn');
         echo $template->render();
+    }
+    
+    public function spawn_action()
+    {
+        $type = Request::option('type');
+        $text = Request::get('text');
+        $details = Request::int('details') ? array('foo', 'bar') : array();
+        
+        $message = call_user_func_array('MessageBox::' . $type, array($text, $details));
+        PageLayout::postMessage($message);
+        
+        header('Location: ' . PluginEngine::getLink($this, array(), 'show'));
     }
 }
 
