@@ -1,4 +1,4 @@
-<form action="<?= $link ?>" id="spawn" method="post">
+<form action="<?= $controller->url_for('messajs/spawn') ?>" id="spawn" method="post">
     <fieldset>
         <legend>Spawn new message</legend>
         

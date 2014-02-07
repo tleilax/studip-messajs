@@ -30,7 +30,19 @@
         error:     postMessage('error'),
         exception: postMessage('exception')
     }
+
+    $(document).bind('ajaxComplete', function (event, xhr) {
+        var header = xhr.getResponseHeader('X-STUDIP-Messages'),
+            messages;
+        if (header) {
+            messages = $.parseJSON(header);
+            $.each(messages, function (index, message) {
+                STUDIP.MessageBox[message.class](message.message, message.details);
+            });
+        }
+    });
 }(jQuery));
+
 
 jQuery(function ($) {
     $('#spawn').submit(function () {

@@ -12,32 +12,23 @@ class MessaJS extends StudIPPlugin implements SystemPlugin
         $this->addStylesheet('assets/messa.less');
         
         $navigation = new Navigation('MessaJS');
-        $navigation->setURL(PluginEngine::getLink($this, array(), 'show'));
+        $navigation->setURL(PluginEngine::getLink($this, array(), 'messajs/index'));
         $navigation->setImage(Assets::image_path('blank.gif'));
         Navigation::addItem('/messajs', $navigation);
     }
     
-    public function show_action()
+    public function perform($unconsumed_path)
     {
-        $factory  = new Flexi_TemplateFactory($this->getPluginPath().'/templates');
-        $template = $factory->open('show');
-        if (!Request::isXhr()) {
-            $template->set_layout($GLOBALS['template_factory']->open('layouts/base'));
-        }
-        $template->link = PluginEngine::getLink($this, array(), 'spawn');
-        echo $template->render();
-    }
-    
-    public function spawn_action()
-    {
-        $type = Request::option('type');
-        $text = Request::get('text');
-        $details = Request::int('details') ? array('foo', 'bar') : array();
+        require_once 'vendor/trails/trails.php';
+        require_once 'app/controllers/studip_controller.php';
         
-        $message = call_user_func_array('MessageBox::' . $type, array($text, $details));
-        PageLayout::postMessage($message);
-        
-        header('Location: ' . PluginEngine::getLink($this, array(), 'show'));
+        $dispatcher = new Trails_Dispatcher(
+            $this->getPluginPath() . DIRECTORY_SEPARATOR . 'app',
+            rtrim(PluginEngine::getLink($this, array(), '/', true), '/'),
+            'messajs'
+        );
+        $dispatcher->plugin = $this;
+        $dispatcher->dispatch($unconsumed_path);
     }
 }
 
